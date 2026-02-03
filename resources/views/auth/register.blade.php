@@ -1,7 +1,7 @@
 @extends('layouts.web.auth')
 
 @section('content')
-<div class="container  mt-5">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
 
@@ -9,26 +9,35 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="true" href="#"> {{ __('Login') }} </a>
+                        <a class="nav-link " href="{{ route('login') }}"> {{ __('Login') }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=" {{ route('register') }} "> {{ __('Register') }} </a>
+                        <a class="nav-link active" aria-current="true" href=" {{ route('register') }} "> {{ __('Register') }} </a>
                     </li>
                     </ul>
                 </div>
                 
 
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('auth.post') }}">
+                    <form method="POST" action="{{ route('register.post') }}">
                         @csrf
+
+                        <div class="form-group row my-1">
+                            <label for="name" class="col-md-4 col-form-label text-md-right blod">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" placeholder="Nombre" required autofocus>
+
+                            </div>
+                        </div>
 
                         <div class="form-group row my-1">
                             <label for="email" class="col-md-4 col-form-label text-md-right blod">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="email@email.com" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="email@email.com" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -57,9 +66,9 @@
                         </div>
 
                         <div class="form-group row mb-0 mt-2">
-                            <div class="col-md-5 offset-md-4">
-                                <button type="submit" class="btn btn-success">
-                                    {{ __('Login') }}
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
