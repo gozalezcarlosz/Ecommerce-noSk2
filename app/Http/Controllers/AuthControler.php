@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class AuthControler extends Controller
 {
     public function login(){
-        return view('auth.login');
+        return view('auth.login')->with('title', __('Auth'));
     }
-    public function register(){
-        return view('auth.register');
-    }
-
     public function create(){
         if (User::where('email', request('email'))->exists()){
             return back()->withErrors([
@@ -26,7 +22,7 @@ class AuthControler extends Controller
             'email' => request('email'),
             'password' => bcrypt(request('password')),
         ]);
-        return redirect()->intended('admin');
+        return redirect()->intended('/dashboard')->with('title', 'Dashboard');
     }
 
     public function authenticate(Request $request){
@@ -36,7 +32,7 @@ class AuthControler extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
-            return redirect()->intended('home');
+            return redirect()->intended('/dashboard')->with('title', 'Dashboard');
         }
 
         return back()->withErrors([
@@ -46,6 +42,6 @@ class AuthControler extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('title', __('Home'));
     }
 }

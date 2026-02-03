@@ -6,9 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles; 
 
 class User extends Authenticatable
 {
+    use HasRoles; //Roles y permisos
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -45,4 +48,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected static function booted(): void{
+
+        static::created(function (User $user) {
+            // Asigna el rol 'usuario' (asegúrate de que el rol exista en tu DB)
+            $user->assignRole('usuario');
+        });
+    }
+
 }

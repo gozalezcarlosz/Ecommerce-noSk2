@@ -7,5 +7,19 @@
     "Forgot Your Password?": "¿Olvidaste tu contraseña?",
     "Admin Panel": "Panel Administrador",
     "Register": "Registrarse",
-    "Logout": "Cerrar sesión"
+    "Logout": "Cerrar sesión",
+    "Home": "Inicio",
+    "Profile": "Perfil",
+    "Settings": "Configuraciones",
+    "See": "Ver",
+    "Edit": "Editar",
+    "Delete": "Eliminar",
+    "Auth": "Autenticación",
+    "Users": "Usuarios",
+    "Permissions": "Permisos",
+    "Shopping Cart": "Carrito de Compras",
+    "Edit Profile": "Editar Perfil",
+    "Save Changes": "Guardar Cambios",
+    "Actions": "Acciones"
+
 }
