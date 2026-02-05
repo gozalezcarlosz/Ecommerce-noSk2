@@ -44,22 +44,32 @@ Route::get('/', [NoAuthController::class, 'index'])->name('home');
 Route::get('/dashboard', [NoAuthController::class, 'dashboard'])->name('dashboard');   
 
 
-// Admin Routes
+// Solo Admin - Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
+    //Users
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users/create', function(){
+        return view('admin.users.create')->with('title', __('Create User'));
+        })->name('admin.users.create.form');
+    Route::post('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::get('/admin/users/{id}', [UserController::class, 'show'])->name('admin.users.show');
+    Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
 
-    //Route::get('/admin/reportes', [ReportController::class, 'index']); //No implementado
 
+        //Route::get('/admin/reportes', [ReportController::class, 'index']); //No implementado
+    //Roles
     Route::get('/admin/roles', [RoleController::class, 'index'])->name('roles');
-    Route::post('/admin/roles', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('/admin/roles/create', [RoleController::class, 'create'])->name('roles.create');
     Route::delete('/admin/roles/{id}', [RoleController::class, 'delete'])->name('roles.delete');
     Route::put('/admin/roles/{id}', [RoleController::class, 'edit'])->name('roles.edit');
 
+    //Permissions
     Route::get('/admin/perms', [PermissionController::class, 'index'])->name('perms'); 
-    Route::post('/admin/perms', [PermissionController::class, 'create'])->name('perms.create');
+    Route::post('/admin/perms/create', [PermissionController::class, 'create'])->name('perms.create');
     Route::delete('/admin/perms/{id}', [PermissionController::class, 'delete'])->name('perms.delete');
     Route::put('/admin/perms/{id}', [PermissionController::class, 'edit'])->name('perms.edit');
 
