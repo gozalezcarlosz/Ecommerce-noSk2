@@ -3,6 +3,7 @@
     "Name": "Nombre",
     "E-Mail Address": "Correo electrónico",
     "Password": "Contraseña",
+    "Confirm Password": "Confirmar contraseña",
     "Remember Me": "Recuérdame",
     "Forgot Your Password?": "¿Olvidaste tu contraseña?",
     "Admin Panel": "Panel Administrador",
@@ -20,6 +21,13 @@
     "Shopping Cart": "Carrito de Compras",
     "Edit Profile": "Editar Perfil",
     "Save Changes": "Guardar Cambios",
-    "Actions": "Acciones"
+    "Actions": "Acciones",
+    "User deleted successfully": "Usuario eliminado con éxito",
+    "Create User": "Crear Usuario",
+    "Edit User": "Editar Usuario",
+    "User Details": "Detalles del Usuario",
+    "User created successfully": "Usuario creado con éxito"
+    
+    
 
 }
